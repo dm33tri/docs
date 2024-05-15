@@ -1,0 +1,365 @@
+%%% Работа с русским языком
+\usepackage[english,russian]{babel}   %% загружает пакет многоязыковой вёрстки
+\usepackage{fontspec}      %% подготавливает загрузку шрифтов Open Type, True Type и др.
+\defaultfontfeatures{Ligatures={TeX},Renderer=Basic}  %% свойства шрифтов по умолчанию
+\setmainfont[Ligatures={TeX,Historic}]{Times New Roman} %% задаёт основной шрифт документа
+\setsansfont{Comic Sans MS}                    %% задаёт шрифт без засечек
+\setmonofont{Courier New}
+\usepackage{indentfirst}
+\frenchspacing
+\usepackage{subfig}
+\usepackage{adjustbox}
+\renewcommand{\epsilon}{\ensuremath{\varepsilon}}
+\renewcommand{\phi}{\ensuremath{\varphi}}
+\renewcommand{\kappa}{\ensuremath{\varkappa}}
+\renewcommand{\le}{\ensuremath{\leqslant}}
+\renewcommand{\leq}{\ensuremath{\leqslant}}
+\renewcommand{\ge}{\ensuremath{\geqslant}}
+\renewcommand{\geq}{\ensuremath{\geqslant}}
+\renewcommand{\emptyset}{\varnothing}
+
+%%% Дополнительная работа с математикой
+\usepackage{amsmath,amsfonts,amssymb,amsthm,mathtools} % AMS
+\usepackage{icomma} % "Умная" запятая: $0,2$ --- число, $0, 2$ --- перечисление
+
+%% Номера формул
+%\mathtoolsset{showonlyrefs=true} % Показывать номера только у тех формул, на которые есть \eqref{} в тексте.
+%\usepackage{leqno} % Нумерация формул слева
+
+%% Свои команды
+\DeclareMathOperator{\sgn}{\mathop{sgn}}
+
+%% Перенос знаков в формулах (по Львовскому)
+\newcommand*{\hm}[1]{#1\nobreak\discretionary{}
+{\hbox{$\mathsurround=0pt #1$}}{}}
+
+%%% Работа с картинками
+\usepackage{graphicx}  % Для вставки рисунков
+\graphicspath{{assets/}}  % папки с картинками
+\setlength\fboxsep{3pt} % Отступ рамки \fbox{} от рисунка
+\setlength\fboxrule{1pt} % Толщина линий рамки \fbox{}
+\usepackage{wrapfig} % Обтекание рисунков текстом
+
+%%% Работа с таблицами
+\usepackage{array,tabularx,tabulary,booktabs} % Дополнительная работа с таблицами
+\usepackage{longtable}  % Длинные таблицы
+\usepackage{multirow} % Слияние строк в таблице
+
+%%% Теоремы
+\theoremstyle{plain} % Это стиль по умолчанию, его можно не переопределять.
+\newtheorem{theorem}{Теорема}[section]
+\newtheorem{proposition}[theorem]{Утверждение}
+ 
+\theoremstyle{definition} % "Определение"
+\newtheorem{corollary}{Следствие}[theorem]
+\newtheorem{problem}{Задача}[section]
+ 
+\theoremstyle{remark} % "Примечание"
+\newtheorem*{nonum}{Решение}
+
+%%% Программирование
+\usepackage{etoolbox} % логические операторы
+
+
+%%% Страница
+\usepackage{extsizes} % Возможность сделать 14-й шрифт
+\usepackage{geometry} % Простой способ задавать поля
+	\geometry{top=20mm}
+	\geometry{bottom=25mm}
+	\geometry{left=30mm}
+	\geometry{right=15mm}
+	\geometry{bindingoffset=0mm}
+ %
+\usepackage{fancyhdr} % Колонтитулы
+	\pagestyle{fancy}
+ 	\renewcommand{\headrulewidth}{0pt}  % Толщина линейки, отчеркивающей верхний колонтитул
+	\cfoot{Москва \@year{}}
+
+\usepackage{setspace} % Интерлиньяж
+\onehalfspacing % Интерлиньяж 1.5
+%\doublespacing % Интерлиньяж 2
+%\singlespacing % Интерлиньяж 1
+
+\usepackage{lastpage} % Узнать, сколько всего страниц в документе.
+
+\usepackage{soul} % Модификаторы начертания
+
+\usepackage{hyperref}
+\usepackage[usenames,dvipsnames,svgnames,table,rgb]{xcolor}
+\hypersetup{				% Гиперссылки
+    unicode=true,           % русские буквы в раздела PDF
+    pdftitle={Заголовок},   % Заголовок
+    pdfauthor={Автор},      % Автор
+    pdfsubject={Тема},      % Тема
+    pdfcreator={Создатель}, % Создатель
+    pdfproducer={Производитель}, % Производитель
+    pdfkeywords={keyword1} {key2} {key3}, % Ключевые слова
+    colorlinks=true,       	% false: ссылки в рамках; true: цветные ссылки
+    linkcolor=black,          % внутренние ссылки
+    citecolor=black,        % на библиографию
+    filecolor=black,      % на файлы
+    urlcolor=black           % на URL
+}
+
+\usepackage{csquotes} % Еще инструменты для ссылок
+
+% \usepackage[citestyle=gost-numeric,bibstyle=gost-footnote]{biblatex}
+% \addbibresource{./common/references.bib}
+
+\usepackage{multicol} % Несколько колонок
+
+\usepackage{tikz} % Работа с графикой
+\usepackage{pgfplots}
+\usepackage{pgfplotstable}
+
+% define year
+\newcommand{\@year}{2024}
+\renewcommand{\year}[1]{
+	\renewcommand{\@year}{#1}
+}
+
+% define doc number
+\newcommand{\@docNumber}{{\color{red}{TODO}}}
+\newcommand{\docNumber}[1]{
+	\renewcommand{\@docNumber}{#1}
+}
+
+% define doc number
+\newcommand{\@supervPos}{{\color{red}{TODO}}}
+\newcommand{\@supervName}{{\color{red}{TODO}}}
+\newcommand{\supervisor}[2]{
+	\renewcommand{\@supervPos}{#1}
+	\renewcommand{\@supervName}{#2}
+}
+
+
+% define student name and group
+\newcommand{\@student}{{\color{red}{TODO}}}
+\newcommand{\@groupName}{{\color{red}{TODO}}}
+\newcommand{\student}[2]{
+	\renewcommand{\@student}{#2}
+	\renewcommand{\@groupName}{#1}
+}
+
+% define doc project name
+\newcommand{\@project}{{\color{red}{TODO}}}
+\newcommand{\project}[1]{
+	\renewcommand{\@project}{#1}
+}
+
+% define doc format
+\newcommand{\@docFormat}{{\color{red}{FORMAT TODO}}}
+\newcommand{\docFormat}[1]{
+	\renewcommand{\@docFormat}{#1}
+}
+
+\usepackage{titlesec}
+
+\newcommand{\@startAdditions}{
+	\setcounter{section}{0}
+	\renewcommand{\sectionbreak}{}
+	\titleformat{\section}[block]{\Large\bfseries\filright}{}{0mm}{}
+	\renewcommand{\@startAdditions}{}
+}
+
+\newcounter{@tempSection}
+
+\newcommand{\sectionbreak}{\clearpage}
+
+%%% addition. example: ПРИЛОЖЕНИЕ А
+\newcommand{\addition}[1]{%
+	\clearpage
+	\newpage
+	\@startAdditions
+	\stepcounter{section}
+	\begin{flushright}
+		\Large \textbf{\textsc{приложение \alph{section}}}
+	\end{flushright}
+	\setcounter{@tempSection}{\arabic{section}}
+	\setcounter{secnumdepth}{0}
+	\section[Приложение \Alph{@tempSection}]{#1}
+	\setcounter{secnumdepth}{4}
+}
+
+\newcommand{\tabForFirstPage}
+{\reversemarginpar\marginpar{\rotatebox{90}{\begin{tabular}{|l|l|l|l|l|}
+				\hline
+				Инв. \text{№} подл & Подп. и дата & Взам. инв. \text{№} & Инв. \text{№} дубл.&Подп. и дата\\
+				\hline
+				&   &   &   &  \\
+				\hline
+\end{tabular}}}}
+
+\setlength{\oddsidemargin}{0mm}
+\newcommand{\itsHSE}{\begin{center}
+	\scshape \bfseries правительство российской федерации\\
+	национальный исследовательский университет \\
+	«высшая школа экономики»
+	\par\vspace{5mm} 
+	\upshape\mdseries
+	\rmfamily\normalsize
+	Факультет компьютерных наук\\
+	Департамент программной инженерии
+\end{center}}
+
+\newcommand{\academicTeacher}[2]{
+	\begin{table}[h]
+		\begin{center}
+			\begin{tabular}{ >{\centering\arraybackslash}p{0.5\textwidth}  >{\centering\arraybackslash}p{0.45\textwidth} }
+				
+				\textsl{СОГЛАСОВАНО} &  \textsl{УТВЕРЖДАЮ}\\  
+				#1 & Академический руководитель образовательной программы «Программная инженерия»\\ 
+				& \\
+				\underline{\hspace{3cm}} #2	&  \underline{\hspace{4cm}} Н.А. Павлочев\\ 
+				<<\underline{\hspace{1cm}}>> \underline{\hspace{3cm}} \@year{} г.&<<\underline{\hspace{1cm}}>> \underline{\hspace{3cm}} \@year{} г.\\
+			\end{tabular}
+		\end{center}
+	\end{table}
+}
+
+\newcommand{\secondPage}{
+	\pagestyle{fancy}
+	\lhead{УТВЕРЖДЕН \newline
+		\@docNumber{}}
+	\vspace*{9cm}
+	\begingroup
+	\centering
+	\projectName{\@project{}}
+	\titleListTwo{\@docFormat{}}
+	\listNumber{\textbf{Листов \pageref{LastPage}}}
+	\endgroup
+	\vspace{8cm}
+	\tabForFirstPage
+	\vspace*{\fill}
+}
+
+\setlength{\footskip}{15mm}
+
+\newcommand{\annotation}{
+	\lhead{ }
+	\chead{\vfill \thepage \vfill  \@docNumber{}}
+	\rhead{ }
+	\cfoot{\tabForTZ}
+}
+
+\newcommand{\thirdPage}{
+	\lhead{ }
+	\chead{\vfill \thepage \vfill  \@docNumber{}}
+	\rhead{ }
+	\cfoot{\tabForTZ}
+	\tableofcontents
+}
+
+\newcommand{\projectName}[1]{
+	\begin{center}
+		\large{\textsc{\textbf{#1}}}
+	\end{center}
+}
+
+
+\newcommand{\titleList}{
+	\begin{center}
+\par\vspace{4mm}
+\textbf{\@docFormat{}}
+\par\vspace{6mm}
+\textbf{
+	ЛИСТ УТВЕРЖДЕНИЯ}
+\par\vspace{6mm}
+\textbf{\@docNumber{}-ЛУ}
+\par\vspace{30mm}
+\end{center}}
+
+
+\newcommand{\titleListTwo}[2]{
+	\begin{center}
+		\par\vspace{4mm}
+		\textbf{#1}
+		\par\vspace{6mm}
+		\textbf{\@docNumber{}}
+\end{center}}
+
+
+\newcommand{\firstPage}{
+	\itsHSE
+	\academicTeacher{\@supervPos{}}{\@supervName{}}
+	\projectName{\@project{}}
+	\titleList
+	\nameOfAuthor
+	\tabForFirstPage
+}
+
+
+\newcommand{\nameOfAuthor}{
+	\hfill\begin{tabular}{r}
+		\\ 
+		Исполнитель: студент 4 курса \\ \@groupName{} 
+		\\ 
+		\underline{\hspace{4cm}} \@student{}
+		\\ 
+		<<\underline{\hspace{1cm}}>> \underline{\hspace{4cm}} \@year{} г.  
+	\end{tabular} 
+}
+
+\newcommand{\listNumber}[1]{\textbf{Листов #1}}
+\usepackage{changepage}
+
+\newlength{\adjustedtextwidth}
+\setlength{\adjustedtextwidth}{\textwidth} % Start with original text width
+\addtolength{\adjustedtextwidth}{20mm} % Adjust for left margin (from adjustwidth)
+
+
+\newcommand{\listRegistration}{%
+\newcolumntype{Y}{>{\hyphenpenalty=25\exhyphenpenalty=25\raggedright\arraybackslash\hspace{0pt}}X}
+
+\cfoot{ }
+\begin{table}[H]
+	\begin{adjustwidth}{-1cm}{-1cm}
+	\begin{tabularx}{\textwidth + 2cm}{|Y|Y|Y|Y|Y|Y|Y|Y|Y|Y|}
+	\hline
+	\multirow{2}{*}{Изм.} & \multicolumn{4}{c|}{Номера листов} & Всего листов в документе& $\text{№}$ документа & Входящий $\text{№}$ сопроводит. докум. и дата & Подпись & Дата
+	\\ [5ex] \cline{2-5}  & измененных & замененных & новых & аннуллированных &  &  &  &  & \\[10ex]
+	\hline
+	& & & & & & & & & \\[5ex]
+	\hline
+	& & & & & & & & & \\[5ex]
+	\hline
+	& & & & & & & & & \\[5ex]
+	\hline
+	& & & & & & & & & \\[5ex]
+	\hline
+	& & & & & & & & & \\[5ex]
+	\hline
+	& & & & & & & & & \\[5ex]
+	\hline
+	& & & & & & & & & \\[5ex]
+	\hline
+	& & & & & & & & & \\[5ex]
+	\hline
+	& & & & & & & & & \\[5ex]
+	\hline
+    & & & & & & & & & \\[5ex]
+	\hline
+	& & & & & & & & & \\[5ex]
+	\hline
+	& & & & & & & & & \\[5ex]
+	\hline
+	& & & & & & & & & \\[5ex]
+	\hline
+	\end{tabularx}
+\end{adjustwidth}
+\end{table}
+}
+
+\newcommand{\tabForTZ}{%
+\begin{tabular}{|p{0.31\linewidth}|p{0.15\linewidth}|p{0.16\linewidth}|p{0.16\linewidth}|p{0.15\linewidth}|}
+		\hline
+		Изм. & Лист & $\text{№}$  докум. & Подп. & Дата\\
+		\hline
+		\scriptsize{\@docNumber{}}& & & &\\
+		\hline
+		Инв. $\text{№}$ подл. & Подп. и дата & Взам. инв. $\text{№}$ & Инв. $\text{№}$ дубл.& Подп. и дата \\
+		\hline
+	\end{tabular}
+}
+
+\usepackage{multicol} % Несколько колонок

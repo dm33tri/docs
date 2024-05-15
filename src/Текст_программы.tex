@@ -1,0 +1,25 @@
+\documentclass[a4paper, 12pt]{article}
+\usepackage{./common/style}
+\usepackage{cite}
+\usepackage{graphicx}
+\usepackage{placeins}
+\usepackage[cache=false]{minted}
+\usepackage[justification=centering]{caption}
+
+\AtBeginEnvironment{minted}{\dontdofcolorbox}
+\def\dontdofcolorbox{\renewcommand\fcolorbox[4][]{##4}}
+
+\begin{document}
+	\sloppy
+    \docNumber{RU.17701729.05.06-01 81 01-1}
+    \docFormat{Текст программы}
+    \student{программы \enquote{Программная инженерия}}{Д.А. Щербаков}
+    \project{Программа для визуализации данных о климате и погоде помощью JavaScript.}
+	\supervisor{Доцент департамента программной инженерии}{Р.А. Родригес Залепинос}
+    \firstPage
+	\newpage
+	\thirdPage
+
+	\section{Текст программы}
+	\input{snippets/src}
+\end{document}

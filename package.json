@@ -1,0 +1,8 @@
+{
+  "scripts": {
+    "format": "prettier"
+  },
+  "devDependencies": {
+    "prettier-plugin-latex": "^2.0.1"
+  }
+}
